@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
+<<<<<<< HEAD
 project(PubSubCpp)
+=======
+project(publisher_subscriber)
+>>>>>>> e875a0c (new Commit)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -17,9 +21,28 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+<<<<<<< HEAD
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+=======
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+add_executable(my_publisher src/publisher.cpp)
+ament_target_dependencies(my_publisher rclcpp std_msgs)
+
+add_executable(my_subscriber src/subscriber.cpp)
+ament_target_dependencies(my_subscriber rclcpp std_msgs)
+
+install(TARGETS
+  my_publisher
+  my_subscriber
+  DESTINATION lib/${PROJECT_NAME}
+)
+>>>>>>> e875a0c (new Commit)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
